@@ -1,12 +1,12 @@
 package hap
 
 import (
-	"github.com/brutella/hap/chacha20poly1305"
-	"github.com/brutella/hap/curve25519"
-	"github.com/brutella/hap/ed25519"
-	"github.com/brutella/hap/hkdf"
-	"github.com/brutella/hap/log"
-	"github.com/brutella/hap/tlv8"
+	"github.com/alexdin/hap/chacha20poly1305"
+	"github.com/alexdin/hap/curve25519"
+	"github.com/alexdin/hap/ed25519"
+	"github.com/alexdin/hap/hkdf"
+	"github.com/alexdin/hap/log"
+	"github.com/alexdin/hap/tlv8"
 
 	"net/http"
 )

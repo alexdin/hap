@@ -2,7 +2,7 @@ package golang
 
 import (
 	"bytes"
-	"github.com/brutella/hap/gen"
+	"github.com/alexdin/hap/gen"
 	"text/template"
 )
 

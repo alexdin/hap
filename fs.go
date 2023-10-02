@@ -1,7 +1,7 @@
 package hap
 
 import (
-	"github.com/brutella/hap/log"
+	"github.com/alexdin/hap/log"
 
 	"encoding/hex"
 	"encoding/json"

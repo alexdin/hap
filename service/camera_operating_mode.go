@@ -1,6 +1,6 @@
 package service
 
-import "github.com/brutella/hap/characteristic"
+import "github.com/alexdin/hap/characteristic"
 
 const TypeCameraOperatingMode = "21A"
 

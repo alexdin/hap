@@ -4,10 +4,10 @@ import (
 	"sync"
 	"time"
 
+	"github.com/alexdin/hap/accessory"
+	"github.com/alexdin/hap/characteristic"
+	"github.com/alexdin/hap/log"
 	"github.com/brutella/dnssd"
-	"github.com/brutella/hap/accessory"
-	"github.com/brutella/hap/characteristic"
-	"github.com/brutella/hap/log"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"github.com/xiam/to"

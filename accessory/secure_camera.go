@@ -1,7 +1,7 @@
 package accessory
 
 import (
-	"github.com/brutella/hap/service"
+	"github.com/alexdin/hap/service"
 )
 
 // SecureCamera provides RTP video streaming.

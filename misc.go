@@ -1,9 +1,9 @@
 package hap
 
 import (
-	"github.com/brutella/hap/accessory"
-	"github.com/brutella/hap/ed25519"
-	"github.com/brutella/hap/log"
+	"github.com/alexdin/hap/accessory"
+	"github.com/alexdin/hap/ed25519"
+	"github.com/alexdin/hap/log"
 
 	"crypto/md5"
 	"crypto/rand"
