@@ -9,7 +9,7 @@ type EventSnapshotsActive struct {
 func NewEventSnapshotsActive() *EventSnapshotsActive {
 	c := NewBool(TypeEventSnapshotsActive)
 	c.Format = FormatBool
-	c.Permissions = []string{PermissionRead, PermissionWrite, PermissionEvents, PermissionTimedWrite}
+	c.Permissions = []string{PermissionRead, PermissionWrite, PermissionEvents}
 	c.SetValue(false)
 
 	return &EventSnapshotsActive{c}

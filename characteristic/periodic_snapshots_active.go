@@ -9,7 +9,7 @@ type PeriodicSnapshotsActive struct {
 func NewPeriodicSnapshotsActive() *PeriodicSnapshotsActive {
 	c := NewBool(TypePeriodicSnapshotsActive)
 	c.Format = FormatBool
-	c.Permissions = []string{PermissionRead, PermissionWrite, PermissionEvents, PermissionTimedWrite}
+	c.Permissions = []string{PermissionRead, PermissionWrite, PermissionEvents}
 	c.SetValue(false)
 
 	return &PeriodicSnapshotsActive{c}

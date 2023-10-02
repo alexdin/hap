@@ -14,6 +14,7 @@ type CameraRecordingManagement struct {
 	SupportedVideoRecordingConfiguration  *characteristic.SupportedVideoRecordingConfiguration
 	SupportedAudioRecordingConfiguration  *characteristic.SupportedAudioRecordingConfiguration
 	SelectedCameraRecordingConfiguration  *characteristic.SelectedCameraRecordingConfiguration
+	Active                                *characteristic.Active
 }
 
 func NewCameraRecordingManagement() *CameraRecordingManagement {
@@ -31,6 +32,9 @@ func NewCameraRecordingManagement() *CameraRecordingManagement {
 
 	s.SelectedCameraRecordingConfiguration = characteristic.NewSelectedCameraRecordingConfiguration()
 	s.AddC(s.SelectedCameraRecordingConfiguration.C)
+
+	s.Active = characteristic.NewActive()
+	s.AddC(s.Active.C)
 
 	return &s
 }

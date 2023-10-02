@@ -9,7 +9,7 @@ type HomeKitCameraActive struct {
 func NewHomeKitCameraActive() *HomeKitCameraActive {
 	c := NewBool(TypeHomeKitCameraActive)
 	c.Format = FormatBool
-	c.Permissions = []string{PermissionRead, PermissionWrite, PermissionEvents, PermissionTimedWrite}
+	c.Permissions = []string{PermissionRead, PermissionWrite, PermissionEvents}
 	c.SetValue(false)
 
 	return &HomeKitCameraActive{c}
