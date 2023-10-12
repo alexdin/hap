@@ -10,6 +10,7 @@ type SecureCamera struct {
 	CameraOperatingMode       *service.CameraOperatingMode
 	StreamManagement          *service.CameraRTPStreamManagement
 	CameraRecordingManagement *service.CameraRecordingManagement
+	MotionSensor              *service.MotionSensor
 }
 
 // NewSecureCamera returns an IP camera accessory.
@@ -25,6 +26,9 @@ func NewSecureCamera(info Info) *SecureCamera {
 
 	a.CameraRecordingManagement = service.NewCameraRecordingManagement()
 	a.AddS(a.CameraRecordingManagement.S)
+
+	a.MotionSensor = service.NewMotionSensor()
+	a.AddS(a.MotionSensor.S)
 
 	return &a
 }
