@@ -5,7 +5,7 @@ import "github.com/brutella/hap/rtp"
 const Bitrate uint16 = 2000
 
 type SupportedVideoRecordingConfiguration struct {
-	Configurations []VideoCodecConfiguration
+	Configurations VideoCodecConfiguration `tlv8:"1"`
 }
 
 type VideoCodecConfiguration struct {
@@ -15,15 +15,15 @@ type VideoCodecConfiguration struct {
 }
 
 type VideoCodecParameters struct {
-	ProfileID      []rtp.VideoCodecProfile `tlv8:"1"`
-	Level          []rtp.VideoCodecLevel   `tlv8:"2"`
-	Bitrate        uint16                  `tlv8:"3"`
-	iFrameInterval uint16                  `tlv8:"4"`
+	ProfileID byte   `tlv8:"1"`
+	Level     byte   `tlv8:"2"`
+	Bitrate   uint16 `tlv8:"3"`
+	//iFrameInterval uint16 `tlv8:"4"`
 }
 
 func DefaultSupportedVideoRecordingConfiguration() SupportedVideoRecordingConfiguration {
 	return SupportedVideoRecordingConfiguration{
-		Configurations: []VideoCodecConfiguration{},
+		Configurations: NewVideoCodecConfiguration(),
 	}
 }
 
@@ -31,18 +31,10 @@ func NewVideoCodecConfiguration() VideoCodecConfiguration {
 	return VideoCodecConfiguration{
 		CodecType: rtp.VideoCodecType_H264,
 		CodecParams: VideoCodecParameters{
-			ProfileID: []rtp.VideoCodecProfile{
-				{rtp.VideoCodecProfileConstrainedBaseline},
-				{rtp.VideoCodecProfileMain},
-				{rtp.VideoCodecProfileHigh},
-			},
-			Level: []rtp.VideoCodecLevel{
-				{rtp.VideoCodecLevel3_1},
-				{rtp.VideoCodecLevel3_2},
-				{rtp.VideoCodecLevel4},
-			},
-			Bitrate:        Bitrate,
-			iFrameInterval: DefaultLength,
+			ProfileID: rtp.VideoCodecProfileHigh,
+			Level:     rtp.VideoCodecLevel4,
+			Bitrate:   Bitrate,
+			//iFrameInterval: DefaultLength,
 		},
 		Attributes: []rtp.VideoCodecAttributes{
 			{1920, 1080, 30}, // 1080p
