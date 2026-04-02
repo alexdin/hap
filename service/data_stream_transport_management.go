@@ -23,5 +23,9 @@ func NewDataStreamTransportManagement() *DataStreamTransportManagement {
 	s.SupportedDataStreamTransportConfiguration = characteristic.NewSupportedDataStreamTransportConfiguration()
 	s.AddC(s.SupportedDataStreamTransportConfiguration.C)
 
+	s.Version = characteristic.NewVersion()
+	s.Version.SetValue("1.0")
+	s.AddC(s.Version.C)
+
 	return &s
 }

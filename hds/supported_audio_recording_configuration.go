@@ -9,8 +9,15 @@ type SupportedAudioRecordingConfiguration struct {
 func NewSupportedAudioRecordingConfiguration() SupportedAudioRecordingConfiguration {
 	return SupportedAudioRecordingConfiguration{
 		Codecs: []rtp.AudioCodecConfiguration{
-			rtp.NewOpusAudioCodecConfiguration(),
-			rtp.NewAacEldAudioCodecConfiguration(),
+			// HKSV recording requires AAC-LC at 32kHz (not AAC-ELD or Opus)
+			{
+				Type: rtp.AudioCodecType_AAC_ELD,
+				Parameters: rtp.AudioCodecParameters{
+					Channels:   1,
+					Bitrate:    rtp.AudioCodecBitrateVariable,
+					Samplerate: rtp.AudioCodecSampleRate32Khz,
+				},
+			},
 		},
 	}
 }

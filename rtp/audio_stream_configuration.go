@@ -15,6 +15,9 @@ const (
 	AudioCodecSampleRate8Khz  byte = 0
 	AudioCodecSampleRate16Khz byte = 1
 	AudioCodecSampleRate24Khz byte = 2
+	AudioCodecSampleRate32Khz byte = 3
+	AudioCodecSampleRate44Khz byte = 4
+	AudioCodecSampleRate48Khz byte = 5
 )
 
 type AudioStreamConfiguration struct {

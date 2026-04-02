@@ -10,7 +10,7 @@ func NewPeriodicSnapshotsActive() *PeriodicSnapshotsActive {
 	c := NewBool(TypePeriodicSnapshotsActive)
 	c.Format = FormatBool
 	c.Permissions = []string{PermissionRead, PermissionWrite, PermissionEvents}
-	c.SetValue(false)
+	c.SetValue(true)
 
 	return &PeriodicSnapshotsActive{c}
 }

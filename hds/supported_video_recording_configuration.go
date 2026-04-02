@@ -14,11 +14,19 @@ type VideoCodecConfiguration struct {
 	Attributes  []rtp.VideoCodecAttributes `tlv8:"3"`
 }
 
+type VideoCodecProfileEntry struct {
+	ProfileID byte `tlv8:"1"`
+}
+
+type VideoCodecLevelEntry struct {
+	Level byte `tlv8:"2"`
+}
+
 type VideoCodecParameters struct {
-	ProfileID byte   `tlv8:"1"`
-	Level     byte   `tlv8:"2"`
-	Bitrate   uint16 `tlv8:"3"`
-	//iFrameInterval uint16 `tlv8:"4"`
+	Profiles       []VideoCodecProfileEntry `tlv8:"-"`
+	Levels         []VideoCodecLevelEntry   `tlv8:"-"`
+	Bitrate        uint16                   `tlv8:"3"`
+	IFrameInterval uint16                   `tlv8:"4"`
 }
 
 func DefaultSupportedVideoRecordingConfiguration() SupportedVideoRecordingConfiguration {
@@ -31,10 +39,18 @@ func NewVideoCodecConfiguration() VideoCodecConfiguration {
 	return VideoCodecConfiguration{
 		CodecType: rtp.VideoCodecType_H264,
 		CodecParams: VideoCodecParameters{
-			ProfileID: rtp.VideoCodecProfileHigh,
-			Level:     rtp.VideoCodecLevel4,
-			Bitrate:   Bitrate,
-			//iFrameInterval: DefaultLength,
+			Profiles: []VideoCodecProfileEntry{
+				{rtp.VideoCodecProfileConstrainedBaseline},
+				{rtp.VideoCodecProfileMain},
+				{rtp.VideoCodecProfileHigh},
+			},
+			Levels: []VideoCodecLevelEntry{
+				{rtp.VideoCodecLevel3_1},
+				{rtp.VideoCodecLevel3_2},
+				{rtp.VideoCodecLevel4},
+			},
+			Bitrate:        Bitrate,
+			IFrameInterval: DefaultLength,
 		},
 		Attributes: []rtp.VideoCodecAttributes{
 			{1920, 1080, 30}, // 1080p

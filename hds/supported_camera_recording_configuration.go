@@ -1,15 +1,16 @@
 package hds
 
-const DefaultLength uint16 = 4000
+// DefaultLength is the default prebuffer/fragment length in milliseconds.
+const DefaultLength = 4000
 
-const EventTriggerMotion = 0x01
-const EventTriggerDoorbell = 0x02
+const EventTriggerMotion uint64 = 0x01
+const EventTriggerDoorbell uint64 = 0x02
 
 const MediaContainerTypeMP4 = 0
 
 type SupportedCameraRecordingConfiguration struct {
-	PreBufferLength             uint16                      `tlv8:"1"`
-	EventTrigger                byte                        `tlv8:"2"`
+	PreBufferLength             uint32                      `tlv8:"1"` // 4 bytes LE per HAP spec
+	EventTrigger                uint64                      `tlv8:"2"` // 8 bytes LE per HAP spec
 	MediaContainerConfiguration MediaContainerConfiguration `tlv8:"3"`
 }
 
@@ -19,7 +20,7 @@ type MediaContainerConfiguration struct {
 }
 
 type MediaContainerParameters struct {
-	FragmentLength uint16 `tlv8:"1"`
+	FragmentLength uint32 `tlv8:"1"` // 4 bytes LE per HAP spec
 }
 
 func NewSupportedCameraRecordingConfiguration() SupportedCameraRecordingConfiguration {

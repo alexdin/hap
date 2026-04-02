@@ -10,7 +10,7 @@ func NewHomeKitCameraActive() *HomeKitCameraActive {
 	c := NewBool(TypeHomeKitCameraActive)
 	c.Format = FormatBool
 	c.Permissions = []string{PermissionRead, PermissionWrite, PermissionEvents}
-	c.SetValue(false)
+	c.SetValue(true)
 
 	return &HomeKitCameraActive{c}
 }

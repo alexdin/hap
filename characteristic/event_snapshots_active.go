@@ -10,7 +10,7 @@ func NewEventSnapshotsActive() *EventSnapshotsActive {
 	c := NewBool(TypeEventSnapshotsActive)
 	c.Format = FormatBool
 	c.Permissions = []string{PermissionRead, PermissionWrite, PermissionEvents}
-	c.SetValue(false)
+	c.SetValue(true)
 
 	return &EventSnapshotsActive{c}
 }
