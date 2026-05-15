@@ -2,10 +2,10 @@ package hds
 
 import "github.com/brutella/hap/rtp"
 
-const Bitrate uint16 = 2000
+const Bitrate uint32 = 2000
 
 type SupportedVideoRecordingConfiguration struct {
-	Configurations VideoCodecConfiguration `tlv8:"1"`
+	Configurations []VideoCodecConfiguration `tlv8:"1"`
 }
 
 type VideoCodecConfiguration struct {
@@ -23,15 +23,15 @@ type VideoCodecLevelEntry struct {
 }
 
 type VideoCodecParameters struct {
-	Profiles       []VideoCodecProfileEntry `tlv8:"-"`
-	Levels         []VideoCodecLevelEntry   `tlv8:"-"`
-	Bitrate        uint16                   `tlv8:"3"`
-	IFrameInterval uint16                   `tlv8:"4"`
+	Profiles       []VideoCodecProfileEntry `tlv8:"1"`
+	Levels         []VideoCodecLevelEntry   `tlv8:"2"`
+	Bitrate        uint32                   `tlv8:"3"`
+	IFrameInterval uint32                   `tlv8:"4"`
 }
 
 func DefaultSupportedVideoRecordingConfiguration() SupportedVideoRecordingConfiguration {
 	return SupportedVideoRecordingConfiguration{
-		Configurations: NewVideoCodecConfiguration(),
+		Configurations: []VideoCodecConfiguration{NewVideoCodecConfiguration()},
 	}
 }
 

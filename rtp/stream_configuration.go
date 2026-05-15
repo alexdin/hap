@@ -20,24 +20,24 @@ type SessionControlCommand struct {
 }
 
 type VideoParameters struct {
-	CodecType   byte                 `tlv8:"1"`
-	CodecParams VideoCodecParameters `tlv8:"2"`
-	Attributes  VideoCodecAttributes `tlv8:"3"`
-	RTP         RTPParams            `tlv8:"4"`
+	CodecType   byte                 `tlv8:"1,optional"`
+	CodecParams VideoCodecParameters `tlv8:"2,optional"`
+	Attributes  VideoCodecAttributes `tlv8:"3,optional"`
+	RTP         RTPParams            `tlv8:"4,optional"`
 }
 
 type AudioParameters struct {
-	CodecType    byte                 `tlv8:"1"`
-	CodecParams  AudioCodecParameters `tlv8:"2"`
-	RTP          RTPParams            `tlv8:"3"`
-	ComfortNoise bool                 `tlv8:"4"`
+	CodecType    byte                 `tlv8:"1,optional"`
+	CodecParams  AudioCodecParameters `tlv8:"2,optional"`
+	RTP          RTPParams            `tlv8:"3,optional"`
+	ComfortNoise bool                 `tlv8:"4,optional"`
 }
 
 type RTPParams struct {
-	PayloadType             uint8   `tlv8:"1"`
-	Ssrc                    uint32  `tlv8:"2"`
-	Bitrate                 uint16  `tlv8:"3"`
-	Interval                float32 `tlv8:"4"`          // MinimumRTCP interval
+	PayloadType             uint8   `tlv8:"1,optional"`
+	Ssrc                    uint32  `tlv8:"2,optional"`
+	Bitrate                 uint16  `tlv8:"3,optional"`
+	Interval                float32 `tlv8:"4,optional"` // MinimumRTCP interval
 	ComfortNoisePayloadType uint8   `tlv8:"5,optional"` // only for audio
 	MTU                     uint16  `tlv8:"6,optional"` // only for video
 }

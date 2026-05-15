@@ -22,7 +22,7 @@ type hdsTransferTransportConfig struct {
 func NewSupportedDataStreamTransportConfiguration() *SupportedDataStreamTransportConfiguration {
 	c := NewBytes(TypeSupportedDataStreamTransportConfiguration)
 	c.Format = FormatTLV8
-	c.Permissions = []string{PermissionRead, PermissionWrite, PermissionWriteResponse}
+	c.Permissions = []string{PermissionRead}
 	cfg := hdsTransferTransportConfig{Config: hdsTransportType{TransportType: 0}}
 	if b, err := tlv8.Marshal(cfg); err == nil {
 		c.SetValue(b)
